@@ -23,7 +23,20 @@ from string import ascii_lowercase as lowercase
 
 
 def caesar(plain_text, shift_num=1):
-    return plain_text.translate(str.maketrans(lowercase, lowercase[shift_num:] + lowercase[0:shift_num]))
+    # Encrypt the plain_text string. Leave anything that isn't lowercase a-z alone.
+    result = ""
+    for char in plain_text:
+        if char in lowercase:
+            start_index = lowercase.index(char)
+            end_index = start_index + shift_num
+            if end_index < 26:
+                transformed_char = lowercase[end_index]
+            else:
+                transformed_char = lowercase[end_index - 26]
+            result += transformed_char
+        else:
+            result += char
+    return result
 
 
 class CaesarTestCase(unittest.TestCase):
