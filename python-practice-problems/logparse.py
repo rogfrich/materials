@@ -61,7 +61,6 @@ if __name__ == "__main__":
                 print(err_status)
 
             # Check if the report line is for an ON or OFF event, and build a list for each event type.
-
             if "Device State: ON" in line or "Device State: OFF" in line:
                 datetime_obj = convert_string_to_date_time_obj(full_date_time_stamp[0:19])
                 if "Device State: ON" in line:
